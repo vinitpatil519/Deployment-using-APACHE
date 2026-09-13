@@ -1,7 +1,7 @@
 ﻿# Deployment-using-APACHE
 
 - Deployed a test application using Apache on K8 kind clusters.
-- Tested HPA and autoscaling of replicas with load-generator
+- Tested HPA and VPA of replicas with load-generator
 
   - Ports:
   - Procol: TCP
