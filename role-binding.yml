@@ -1,0 +1,14 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: apache-manager-rolebinding
+  namespace: apache
+
+subjects:
+- kind: User
+  name: apache-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: Role
+    name: apache-manager
+    apiGroup: rbac.authorization.k8s.io
