@@ -4,10 +4,11 @@
 - Tested HPA and VPA of replicas with load-generator
 
   - Ports:
-  - Procol: TCP
-  - port: 80 (exposed port in the cluster)
-  - targetPort 80 (container port)
- 
+    - Procol: TCP
+    - port: 80 (exposed port in the cluster)
+    - targetPort 80 (container port)
+
+**HPA**
          sudo -E kubectl port-forward service/apache-service -n apache 82:80 --address=0.0.0.0
 --> AWS -> running instance -> new inbound rule was added in the security group to allow traffic on port 82 (which is mapped to targetPort 80) - this is TCP too
 
@@ -16,4 +17,14 @@ Testing autoscaling of replicas using a load generator:
     kubectl run -I --tty load-generator --image=busybox -n apach /bin/sh
     while true; do wget -q -O- http://apache-service.namespace.svc.cluster.local; done
 
-(-i -> interactive terminal, --tty -> wait for your response, busybox -> single file containing hundreds of unix & linux cli tools, the url is for accessing apache service {on port 82})
+(-i -> interactive terminal, --tty -> wait for your response, busybox -> single file containing hundreds of unix & linux cli tools, the url given is the dns for accessing apache service {on port 82})
+
+
+
+**VPA**
+
+[installation](https://github.com/kubernetes/autoscaler/blob/master/vertical-pod-autoscaler/docs/installation.md)
+
+installation command:
+
+    ./hack/vpa-down.sh
