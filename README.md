@@ -9,6 +9,7 @@
     - targetPort 80 (container port)
 
 **HPA**
+         
          sudo -E kubectl port-forward service/apache-service -n apache 82:80 --address=0.0.0.0
 --> AWS -> running instance -> new inbound rule was added in the security group to allow traffic on port 82 (which is mapped to targetPort 80) - this is TCP too
 
